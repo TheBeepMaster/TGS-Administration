@@ -12,6 +12,8 @@ client.on("message", message => {
         const command = message.content.split(" ")[0].slice(process.env.PREFIX.length + 1);
         let args = [];
 
+        message.reply("Running command " + command); // For debugging reasons.
+
         for (let index = 0; index < message.content.split(" ").length; index++) {
             if (index != 0) { // Ignore the command.
                 args.push(message.content.split(" ")[index]);
@@ -23,7 +25,7 @@ client.on("message", message => {
             try {
                 const cmdModule = require(`./commands/${commands}.js`);
 
-                return cmdModule.run(client, message, args);
+                cmdModule.run(client, message, args);
             } catch (err) {
                 return message.reply(":x: An error occured ```fix\n" + err + "```");
             };
