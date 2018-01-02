@@ -1,5 +1,3 @@
-import { type } from "os";
-
 exports.run = function(client, message, args) {
     const user = message.mentions.users.array()[0];
     const reason = args[1]
