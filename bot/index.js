@@ -9,10 +9,8 @@ client.on("message", message => {
     if (!message.guild.available) return;
 
     if (message.content.startsWith(process.env.PREFIX)) {
-        const command = message.content.split(" ")[0].slice(process.env.PREFIX.length + 1);
+        const command = message.content.split(" ")[0].slice(process.env.PREFIX.length);
         let args = [];
-
-        message.reply("Running command " + command); // For debugging reasons.
 
         for (let index = 0; index < message.content.split(" ").length; index++) {
             if (index != 0) { // Ignore the command.
