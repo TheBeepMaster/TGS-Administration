@@ -12,6 +12,8 @@ client.on("message", message => {
         const command = message.content.split(" ")[0].slice(process.env.PREFIX.length);
         let args = [];
 
+        message.reply("Running command: " + command + ".");
+
         for (let index = 0; index < message.content.split(" ").length; index++) {
             if (index != 0) { // Ignore the command.
                 args.push(message.content.split(" ")[index]);
