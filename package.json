@@ -1,0 +1,14 @@
+{
+  "name": "tgs_administration",
+  "version": "1.0.0",
+  "description": "The Gaming Squad Administration Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TheBeepMaster#0506",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.2.1"
+  }
+}
