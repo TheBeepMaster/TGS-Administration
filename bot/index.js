@@ -20,9 +20,13 @@ client.on("message", message => {
 
         let validCommand = fs.existsSync(`./commands/${command}.js`);
         if (validCommand) {
-            const cmdModule = require(`./commands/${commands}.js`);
+            try {
+                const cmdModule = require(`./commands/${commands}.js`);
 
-            return cmdModule.run(client, message, args);
+                return cmdModule.run(client, message, args);
+            } catch (err) {
+                return message.reply(":x: An error occured ```fix\n" + err + "```");
+            };
         } else {
             return message.reply(":x: That command doesn't exists. Please use " + process.env.PREFIX + "help for a valid list of commands.");
         };
