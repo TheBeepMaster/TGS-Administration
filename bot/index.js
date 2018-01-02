@@ -9,7 +9,7 @@ client.on("message", message => {
     if (!message.guild.available) return;
 
     if (message.content.startsWith(process.env.PREFIX)) {
-        const command = message.content.split(" ")[0].slice(2);
+        const command = message.content.split(" ")[0].slice(process.env.PREFIX.length + 1);
         let args = [];
 
         for (let index = 0; index < message.content.split(" ").length; index++) {
