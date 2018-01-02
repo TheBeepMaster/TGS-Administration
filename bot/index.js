@@ -19,8 +19,8 @@ client.on("message", message => {
         };
 
         let validCommand = fs.existsSync(`./commands/${command}.js`);
-        
-        message.reply("validCommand: " + validCommand);
+
+        console.log(command, validCommand);
 
         if (validCommand) {
             try {
