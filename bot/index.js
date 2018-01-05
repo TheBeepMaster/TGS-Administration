@@ -5,16 +5,14 @@ const client = new discordjs.Client({
 const permissions = require("./util/permissions.js");
 
 client.on("ready", () => {
-    const date = new Date();
-    const hours = date.getHours();
-    const minutes = date.getMinutes()
-
-    client.user.setPresence({
-        status: "dnd",
-        game: {
-            name: "with the ban hammer"
-        }
-    });
+    client.setInterval(function() {
+        client.user.setPresence({
+            status: "dnd",
+            game: {
+                name: "with the ban hammer for " + client.uptime + " seconds"
+            }
+        });
+    }, 1000);
 
     console.log(`The bot is now online. Started on: ${hours}:${minutes}`);
 });
