@@ -35,7 +35,7 @@ exports.run = function(client, message, args) {
                     member.addRoles(memberRoles, "The 2 hours have passed. Unbanning user.");
                     member.removeRole(banRole);
                     member.send("You have been unbanned in **The Gaming Squad**. You can now chat again.");
-                }, 5000); // 7.200.000 = 2 hours; 1000 is for testing purposes.
+                }, 10000); // 7.200.000 = 2 hours; 1000 is for testing purposes.
 
                 return member.send(`You have been banned in **The Gaming Squad**.\n\nFor reason: **${reason}**\nAdministrator: **${message.author.username}**`);
             } else {
