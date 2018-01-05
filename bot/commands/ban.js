@@ -26,7 +26,7 @@ exports.run = function(client, message, args) {
                 message.channel.send(`:ban: **${member.displayName}** has been banned for 2 hours.`);
                 message.delete();
 
-                return member.send(`You have been banned in **The Gaming Squad**.\n\nFor reason: **${reason}**`);
+                return member.send(`You have been banned in **The Gaming Squad**.\n\nFor reason: **${reason}**\nAdministrator: **${message.author.username}**`);
             } else {
                 return message.reply(":x: Unable to find the **Banned** role. The user has not been banned.");
             };
