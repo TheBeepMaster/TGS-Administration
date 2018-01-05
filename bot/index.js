@@ -18,20 +18,19 @@ client.on("message", message => {
             };
         };
 
-        const validCommand = fs.existsSync(`./commands/${command}.js`);
-
-        console.log(`Command: ${command}\nValid: ${validCommand}`);
+        // Since fs.existsSync() doesn't seem to work on Heroku...
+        let validCommand = false;
+        try {
+            require(`./commands/${command}.js`);
+            validCommand = true;
+        } catch (err) {
+            validCommand = false;
+        };
 
         if (validCommand) {
-            try {
-                const cmdModule = require(`./commands/${command}.js`);
-
-                cmdModule.run(client, message, args);
-            } catch (err) {
-                return message.reply(":x: An error occured ```fix\n" + err + "```");
-            };
+            const cmd = require(`./commands/${command}.js`);
+            cmd.run(client, message, args);
         } else {
-            require("./commands/" + command + ".js"); // Checking if it actually exists. Because it always returns false.
             return message.reply(":x: This command is invalid. Please use " + process.env.PREFIX + "help for a valid list of commands.");
         };
     };
