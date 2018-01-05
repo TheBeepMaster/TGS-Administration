@@ -2,12 +2,18 @@ const discordjs = require("discord.js");
 const client = new discordjs.Client({
     disableEveryone: true
 });
+const permissions = require("./util/permissions.js");
 
 client.on("message", message => {
     if (message.author.bot) return;
     if (!message.guild.available) return;
 
     if (message.content.startsWith(process.env.PREFIX)) {
+        const member = message.guild.members.find("id", message.author.id);
+        const permission_level = permissions.calculate(member);
+
+        if (permission_level == 0) return message.reply("You are not authorized to execute commands.");
+
         const command = message.content.split(" ")[0].slice(process.env.PREFIX.length).toLowerCase();
         let args = [];
 
@@ -23,12 +29,17 @@ client.on("message", message => {
             require(`./commands/${command}.js`);
             validCommand = true;
         } catch (err) {
+            console.log(err);
             validCommand = false;
         };
 
         if (validCommand) {
             const cmd = require(`./commands/${command}.js`);
-            cmd.run(client, message, args);
+            if (permission_level >= cmd.help["permission_level"]) {
+                cmd.run(client, message, args);
+            } else {
+                return message.reply("You are not allowed to execute this command. Your permission level is too low.");
+            };
         } else {
             return message.reply(":x: This command is invalid. Please use " + process.env.PREFIX + "help for a valid list of commands.");
         };
