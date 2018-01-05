@@ -7,6 +7,9 @@ exports.run = function(client, message, args) {
         };
     };
     reason = reason.join(" ");
+    if (reason.length == 0) {
+        reason = "No reason provided.";
+    };
 
     const member = message.guild.members.find("id", user.id);
 
