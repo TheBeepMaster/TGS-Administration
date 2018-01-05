@@ -8,7 +8,7 @@ exports.run = function(client, message, args) {
         if (typeof(reason) == "string") {
             let banRole = message.guild.roles.find("name", "Banned");
             if (banRole) {
-                for (role in member.roles.array()) {
+                for (role in member.roles) {
                     member.removeRole(role, "This user is banned.");
                 };
                 member.addRole(banRole, reason);
