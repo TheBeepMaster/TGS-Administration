@@ -9,7 +9,7 @@ exports.run = function(client, message, args) {
 
     const commands = fs.readdirSync(".");
     for (let index = 0; index < commands.length; index++) {
-        const command = require(`./${commands[index]}.js`);
+        const command = require(commands[index] + ".js");
 
         embed.addField(command.name, "Usage: **" + process.env.PREFIX + command.name + " " + command.usage);
     };
@@ -19,6 +19,6 @@ exports.run = function(client, message, args) {
 
 exports.help = {
     "permission_level": 1,
-    "name": "Help",
-    "usage": ""
+    "name": "Ban",
+    "usage": "<@User> <Reason>"
 };
