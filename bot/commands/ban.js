@@ -31,10 +31,10 @@ exports.run = function(client, message, args) {
                 message.delete();
                 
                 client.setTimeout(function() {
-                    for (role in memberRoles) {
-                        console.log(role);
+                    for (let index = 0; index < memberRoles.length; index++) {
+                        const role = memberRoles[index];
                         if (!role.name.startsWith("Warning")) {
-                            member.addRole(role, "The 2 hours have passed. Unbanning user.");
+                            member.addRole(role);
                         };
                     };
 
