@@ -32,6 +32,7 @@ exports.run = function(client, message, args) {
                 
                 client.setTimeout(function() {
                     for (role in memberRoles) {
+                        console.log(role);
                         if (!role.name.startsWith("Warning")) {
                             member.addRole(role, "The 2 hours have passed. Unbanning user.");
                         };
