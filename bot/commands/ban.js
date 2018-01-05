@@ -19,7 +19,7 @@ exports.run = function(client, message, args) {
                 };
                 member.addRole(banRole, reason);
 
-                message.channel.send(`**${member.username}** has been banned for 2 hours.`);
+                message.channel.send(`**${member.displayName}** has been banned for 2 hours.`);
                 return member.send(`You have been banned in **The Gaming Squad**.\n\nFor reason: **${reason}**`);
             } else {
                 return message.reply(":x: Unable to find the **Banned** role. The user has not been banned.");
