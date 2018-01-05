@@ -10,6 +10,8 @@ client.on("ready", () => {
     const minutes = date.getMinutes()
 
     client.user.setPresence(`Start up: ${hours}:${minutes}`);
+
+    console.log(`The bot is now online. Started on: ${hours}:${minutes}`);
 });
 
 client.on("message", message => {
