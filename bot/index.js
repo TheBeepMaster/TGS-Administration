@@ -19,7 +19,7 @@ client.on("message", message => {
         };
 
         const validCommand = fs.existsSync(`./commands/${command}.js`);
-        
+
         console.log(`Command: ${command}\nValid: ${validCommand}`);
 
         if (validCommand) {
@@ -31,7 +31,8 @@ client.on("message", message => {
                 return message.reply(":x: An error occured ```fix\n" + err + "```");
             };
         } else {
-            return message.reply(":x: That command doesn't exists. Please use " + process.env.PREFIX + "help for a valid list of commands.");
+            require("./commands/" + command + ".js"); // Checking if it actually exists. Because it always returns false.
+            return message.reply(":x: This command is invalid. Please use " + process.env.PREFIX + "help for a valid list of commands.");
         };
     };
 });
