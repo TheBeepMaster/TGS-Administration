@@ -5,14 +5,12 @@ const client = new discordjs.Client({
 const permissions = require("./util/permissions.js");
 
 client.on("ready", () => {
-    client.setInterval(function() {
-        client.user.setPresence({
-            status: "dnd",
-            game: {
-                name: "with the ban hammer"
-            }
-        });
-    }, 1000);
+    client.user.setPresence({
+        status: "dnd",
+        game: {
+            name: "with the ban hammer"
+        }
+    });
 });
 
 client.on("message", message => {
