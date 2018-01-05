@@ -17,11 +17,10 @@ exports.run = function(client, message, args) {
         if (typeof(reason) == "string") {
             let banRole = message.guild.roles.find("name", "Banned");
             if (banRole) {
-                let memberRoles = [];
+                let memberRoles = member.roles.array();
 
                 for (index = 0; index < member.roles.array().length; index++) {
                     const role = member.roles.array()[index];
-                    memberRoles.push(role);
 
                     member.removeRole(role, "This user is banned.");
                 };
