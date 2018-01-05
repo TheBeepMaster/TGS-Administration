@@ -4,6 +4,14 @@ const client = new discordjs.Client({
 });
 const permissions = require("./util/permissions.js");
 
+client.on("ready", () => {
+    const date = new Date();
+    const hours = date.getHours();
+    const minutes = date.getMinutes()
+
+    client.user.setPresence(`Start up: ${hours}:${minutes}`);
+});
+
 client.on("message", message => {
     if (message.author.bot) return;
     if (!message.guild.available) return;
