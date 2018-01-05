@@ -38,13 +38,14 @@ client.on("message", message => {
 
 client.login(process.env.TOKEN);
 
+// Prevent the bot from sleeping.
+const http = require('http');
+const express = require('express');
+const app = express();
+
 app.listen(port, () => {
     console.log("TGS Administration bot is online on: http://localhost:" + port + ".");
 });
-
-// Prevent the bot from sleeping.
-const http = require("http");
-const port = process.env.PORT || 5000;
 
 setInterval(() => {
     http.get("https://tgs-administration.herokuapp.com");
