@@ -9,7 +9,7 @@ client.on("ready", () => {
         client.user.setPresence({
             status: "dnd",
             game: {
-                name: "with the ban hammer for " + client.uptime + " seconds"
+                name: "with the ban hammer"
             }
         });
     }, 1000);
