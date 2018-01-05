@@ -31,11 +31,16 @@ exports.run = function(client, message, args) {
                 message.delete();
                 
                 client.setTimeout(function() {
-                    member.addRoles(memberRoles, "The 2 hours have passed. Unbanning user.");
+                    for (role in memberRoles) {
+                        if (!role.name.startsWith("Warning")) {
+                            member.addRole(role, "The 2 hours have passed. Unbanning user.");
+                        };
+                    };
+
                     member.removeRole(banRole);
                     member.send("You have been unbanned in **The Gaming Squad**. You can now chat again.");
                     channel.send(`Unbanning user **${member.displayName}**.`);
-                }, 7200000);
+                }, 10000); // 7200000; 10 sec for debugging purposes.
 
                 return member.send(`You have been banned in **The Gaming Squad**.\n\nFor reason: **${reason}**\nAdministrator: **${message.author.username}**`);
             } else {
