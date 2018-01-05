@@ -7,11 +7,11 @@ exports.run = function(client, message, args) {
     embed.setColor(0xCC3E44);
     embed.setFooter("© The Gaming Squad, 2018");
 
-    const commands = fs.readdirSync("/commands/");
+    const commands = fs.readdirSync("./commands/");
     for (let index = 0; index < commands.length; index++) {
         try {
             console.log(commands[index]);
-            const command = require(`/${commands[index]}.js`);
+            const command = require(`./commands/${commands[index]}.js`);
 
             embed.addField(command.name, "Usage: **" + process.env.PREFIX + command.name + " " + command.usage);
         } catch (err) {
