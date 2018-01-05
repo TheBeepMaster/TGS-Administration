@@ -18,7 +18,11 @@ client.on("message", message => {
             };
         };
 
-        if (fs.existsSync(`./commands/${command}.js`)) {
+        const validCommand = fs.existsSync(`./commands/${command}.js`);
+        
+        console.log(`Command: ${command}\nValid: ${validCommand}`);
+
+        if (validCommand) {
             try {
                 const cmdModule = require(`./commands/${command}.js`);
 
