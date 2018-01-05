@@ -8,8 +8,13 @@ exports.run = function(client, message, args) {
         if (typeof(reason) == "string") {
             let banRole = message.guild.roles.find("name", "Banned");
             if (banRole) {
-                member.addRole(banRole);
-                return member.send(`You have been banned in The Gaming Squad. For reason: ${reason}`);
+                for (role in member.roles.array()) {
+                    member.removeRole(role, "This user is banned.");
+                };
+                member.addRole(banRole, reason);
+
+                message.channel.send(`**${member.username}** has been banned for 2 hours.`);
+                return member.send(`You have been banned in **The Gaming Squad**.\n\nFor reason: **${reason}**`);
             } else {
                 return message.reply(":x: Unable to find the **Banned** role. The user has not been banned.");
             };
