@@ -9,10 +9,15 @@ exports.run = function(client, message, args) {
 
     const commands = fs.readdirSync(".");
     for (let index = 0; index < commands.length; index++) {
-        console.log(commands[index]);
-        const command = require(commands[index] + ".js");
+        try {
+            console.log(commands[index]);
+            const command = require(commands[index] + ".js");
 
-        embed.addField(command.name, "Usage: **" + process.env.PREFIX + command.name + " " + command.usage);
+            embed.addField(command.name, "Usage: **" + process.env.PREFIX + command.name + " " + command.usage);
+        } catch (err) {
+            console.log("Error while loading command at help.js:\n" + err);
+            embed.addField("Cannot load command", ":x: An error occured while trying to load this command.");
+        };
     };
 
     return message.author.send({embed: embed});
