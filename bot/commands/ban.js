@@ -1,6 +1,12 @@
 exports.run = function(client, message, args) {
     const user = message.mentions.users.array()[0];
-    const reason = args[1]
+    const reason = []
+    for (let index = 0; index < args.length; index++) {
+        if (index != 0) {
+            reason.push(args[index]);
+        };
+    };
+    reason = reason.join(" ");
 
     const member = message.guild.members.find("id", user.id);
 
