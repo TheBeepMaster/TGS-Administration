@@ -7,7 +7,7 @@ exports.run = function(client, message, args) {
     embed.setColor(0xCC3E44);
     embed.setFooter("© The Gaming Squad, 2018");
 
-    const commands = fs.readdirSync(".");
+    const commands = fs.readdirSync("/");
     for (let index = 0; index < commands.length; index++) {
         try {
             console.log(commands[index]);
