@@ -12,7 +12,7 @@ exports.run = function(client, message, args) {
         try {
             const command = require(`./${commands[index]}`);
 
-            embed.addField(command.help["name"], "Usage: **" + process.env.PREFIX + command.help["name"] + " " + command.help["usage"]);
+            embed.addField(command.help["name"], "Usage: **" + process.env.PREFIX + command.help["name"] + " " + command.help["usage"] + "**");
         } catch (err) {
             console.log("Error while loading command at help.js:\n" + err);
             embed.addField("Cannot load command", ":x: An error occured while trying to load this command.");
