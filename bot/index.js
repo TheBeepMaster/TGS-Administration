@@ -13,8 +13,6 @@ client.on("ready", () => {
             }
         });
     }, 1000);
-
-    console.log(`The bot is now online. Started on: ${hours}:${minutes}`);
 });
 
 client.on("message", message => {
