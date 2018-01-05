@@ -1,6 +1,6 @@
 exports.run = function(client, message, args) {
     const user = message.mentions.users.array()[0];
-    const reason = []
+    let reason = []
     for (let index = 0; index < args.length; index++) {
         if (index != 0) {
             reason.push(args[index]);
