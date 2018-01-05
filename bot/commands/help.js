@@ -10,7 +10,7 @@ exports.run = function(client, message, args) {
     const commands = fs.readdirSync("./bot/commands");
     for (let index = 0; index < commands.length; index++) {
         try {
-            const command = require(`./bot/commands/${commands[index]}`);
+            const command = require(`./${commands[index]}`);
 
             embed.addField(command.name, "Usage: **" + process.env.PREFIX + command.name + " " + command.usage);
         } catch (err) {
