@@ -63,5 +63,5 @@ client.login(process.env.TOKEN);
 const http = require('http');
 
 setInterval(() => {
-    http.get("https://tgs-administration.herokuapp.com");
+    http.get("http://tgs-administration.herokuapp.com");
 }, 900000);
