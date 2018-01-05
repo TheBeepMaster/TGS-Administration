@@ -24,6 +24,6 @@ exports.run = function(client, message, args) {
 
 exports.help = {
     "permission_level": 1,
-    "name": "Ban",
-    "usage": "<@User> <Reason>"
+    "name": "Help",
+    "usage": ""
 };
