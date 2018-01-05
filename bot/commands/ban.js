@@ -5,7 +5,7 @@ exports.run = function(client, message, args) {
     const member = message.guild.members.find("id", user.id);
 
     if (member) { // To be on the safe side.
-        if (type(reason) == "string") {
+        if (typeof(reason) == "string") {
             let banRole = message.guild.roles.find("name", "Banned");
             if (banRole) {
                 member.addRole(banRole);
