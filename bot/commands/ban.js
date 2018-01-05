@@ -18,6 +18,7 @@ exports.run = function(client, message, args) {
             let banRole = message.guild.roles.find("name", "Banned");
             if (banRole) {
                 let memberRoles = member.roles.array();
+                const channel = message.channel
 
                 for (index = 0; index < member.roles.array().length; index++) {
                     const role = member.roles.array()[index];
@@ -26,15 +27,15 @@ exports.run = function(client, message, args) {
                 };
                 member.addRole(banRole, reason);
 
-                message.channel.send(`:ban: **${member.displayName}** has been banned for 2 hours.`);
+                channel.send(`**${member.displayName}** has been banned for 2 hours.`);
                 message.delete();
-
                 
                 client.setTimeout(function() {
                     member.addRoles(memberRoles, "The 2 hours have passed. Unbanning user.");
                     member.removeRole(banRole);
                     member.send("You have been unbanned in **The Gaming Squad**. You can now chat again.");
-                }, 7200000);
+                    channel.send(`Unbanning user **${member.displayName}**.`);
+                }, 10000); // 7200000
 
                 return member.send(`You have been banned in **The Gaming Squad**.\n\nFor reason: **${reason}**\nAdministrator: **${message.author.username}**`);
             } else {
