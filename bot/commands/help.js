@@ -9,6 +9,7 @@ exports.run = function(client, message, args) {
 
     const commands = fs.readdirSync(".");
     for (let index = 0; index < commands.length; index++) {
+        console.log(commands[index]);
         const command = require(commands[index] + ".js");
 
         embed.addField(command.name, "Usage: **" + process.env.PREFIX + command.name + " " + command.usage);
