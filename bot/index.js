@@ -9,7 +9,7 @@ client.on("ready", () => {
     const hours = date.getHours();
     const minutes = date.getMinutes()
 
-    client.user.setPresence(`Start up: ${hours}:${minutes}`);
+    client.user.setPresence("with the ban hammer");
 
     console.log(`The bot is now online. Started on: ${hours}:${minutes}`);
 });
