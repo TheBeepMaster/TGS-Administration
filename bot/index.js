@@ -1,24 +1,45 @@
-exports.run = function(client, message, args) {
-    const user = message.mentions.users.array()[0];
-    const reason = args[1]
+const discordjs = require("discord.js");
+const client = new discordjs.Client({
+    disableEveryone: true
+});
 
-    const member = message.guild.members.find("id", user.id);
+client.on("message", message => {
+    if (message.author.bot) return;
+    if (!message.guild.available) return;
 
-    if (member) { // To be on the safe side.
-        if (typeof reason == "string") {
-            let banRole = message.guild.roles.find("name", "Banned");
-            if (banRole) {
-                member.addRole(banRole);
-                return member.send(`You have been banned in The Gaming Squad. For reason: ${reason}`);
-            } else {
-                return message.reply(":x: Unable to find the **Banned** role. The user has not been banned.");
+    if (message.content.startsWith(process.env.PREFIX)) {
+        const command = message.content.split(" ")[0].slice(process.env.PREFIX.length).toLowerCase();
+        let args = [];
+
+        for (let index = 0; index < message.content.split(" ").length; index++) {
+            if (index != 0) { // Ignore the command.
+                args.push(message.content.split(" ")[index]);
             };
-        }
-    };
-};
+        };
 
-exports.help = {
-    "permission_level": 1,
-    "name": "Ban",
-    "usage": `<@User> <Reason>`
-};
+        // Since fs.existsSync() doesn't seem to work on Heroku...
+        let validCommand = false;
+        try {
+            require(`./commands/${command}.js`);
+            validCommand = true;
+        } catch (err) {
+            validCommand = false;
+        };
+
+        if (validCommand) {
+            const cmd = require(`./commands/${command}.js`);
+            cmd.run(client, message, args);
+        } else {
+            return message.reply(":x: This command is invalid. Please use " + process.env.PREFIX + "help for a valid list of commands.");
+        };
+    };
+});
+
+client.login(process.env.TOKEN);
+
+// Prevent the bot from sleeping.
+const http = require('http');
+
+setInterval(() => {
+    http.get("https://tgs-administration.herokuapp.com");
+}, 900000);
