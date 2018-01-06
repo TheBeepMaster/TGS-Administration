@@ -41,7 +41,7 @@ exports.run = function(client, message, args) {
                     member.removeRole(banRole);
                     member.send("You have been unbanned in **The Gaming Squad**. You can now chat again.");
                     channel.send(`Unbanning user **${member.displayName}**.`);
-                }, 7200000);
+                }, 10000); // 7200000
 
                 return member.send(`You have been banned in **The Gaming Squad**.\n\nFor reason: **${reason}**\nAdministrator: **${message.author.username}**`);
             } else {
