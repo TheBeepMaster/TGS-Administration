@@ -49,10 +49,10 @@ exports.run = function(client, message, args) {
                     return message.reply(":x: Unable to find the **Banned** role. The user has not been banned.");
                 };
             } else {
-                return message.reply("Please provide a valid reason.");
+                return message.reply(":x: Please provide a valid reason.");
             };
         } else {
-            return message.reply("You can't ban a founder.");
+            return message.reply(":x: You can't ban a founder.");
         };
     };
 };
