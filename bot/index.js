@@ -52,6 +52,10 @@ client.on("message", message => {
         } else {
             return message.reply(":x: This command is invalid. Please use " + process.env.PREFIX + "help for a valid list of commands.");
         };
+    } else {
+        if (message.content.toLowerCase().includes("ban")) {
+            return message.reply("Did I just hear the word ban? ;)");
+        };
     };
 });
 
