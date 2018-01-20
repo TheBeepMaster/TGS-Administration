@@ -1,3 +1,5 @@
+// WIP (Work in progress)
+
 const discordjs = require("discord.js");
 const webhook = new discordjs.WebhookClient(process.env.WEBHOOK_ID, process.env.WEBHOOK_TOKEN);
 
