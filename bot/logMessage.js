@@ -9,7 +9,7 @@ exports.log = function(message) {
     if (member) {
         const embed = new discordjs.RichEmbed();
         embed.setColor(0xff0000);
-        embed.addField(member, message.content);
+        embed.addField("Author: " + member.displayName, "Message: **"+ message.content + "**");
         embed.setFooter("© The Gaming Squad, 2018");
 
         webhook.send({embed: embed});
