@@ -7,5 +7,5 @@ exports.log = function(message) {
     embed.addField(member.displayName, message.content);
     embed.setFooter("© The Gaming Squad, 2018")
 
-    webhook.send({embed: embed});
+    return webhook.send({embed: embed});
 };
