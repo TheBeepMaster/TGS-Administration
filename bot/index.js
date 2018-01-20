@@ -3,6 +3,7 @@ const client = new discordjs.Client({
     disableEveryone: true
 });
 const permissions = require("./util/permissions.js");
+const logMessage = require("./logMessage.js");
 
 client.on("ready", () => {
     client.user.setPresence({
@@ -54,9 +55,13 @@ client.on("message", message => {
         };
     } else {
         if (message.content.toLowerCase().includes("ban")) {
-            return message.reply("Did I just hear the word ban? :wink: ");
+            return message.reply("Did I just hear the word ban? ;)");
         };
     };
+});
+
+client.on("messageDelete", message => {
+    logMessage.log(message);
 });
 
 client.login(process.env.TOKEN);
