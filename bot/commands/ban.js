@@ -43,7 +43,7 @@ exports.run = function(client, message, args) {
                     channel.send(`Unbanning user **${member.displayName}**.`);
                 }, 7200000);
 
-                return member.send(`You have been banned in **The Gaming Squad**.\n\nFor reason: **${reason}**\nAdministrator: **${message.author.username}**`);
+                return member.send(`You have been banned in **The Gaming Squad**.\n\nFor reason: **${reason}**\nAdministrator: **${message.author.username}**\n\nIf you're not unbanned after 2 hours, please ask a staff member to unban you.`);
             } else {
                 return message.reply(":x: Unable to find the **Banned** role. The user has not been banned.");
             };
