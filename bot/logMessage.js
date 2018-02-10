@@ -7,6 +7,6 @@ exports.log = function(message, type) {
     if (member && !message.author.bot) {
         const embed = new discordjs.RichEmbed();
 
-        webhook.send(`Author: **${member.displayName}**\nMessage: **${message.content}**\nType: **${type}**\nTimestamp: **${new Date()}**\n`);
+        webhook.send(`Author: **${member.displayName}**\nMessage: **${message.content}**\nType: **${type}**\nTimestamp: **${new Date()}**\n\n`);
     };
 };
