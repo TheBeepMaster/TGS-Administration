@@ -15,10 +15,9 @@ exports.log = function(message, type) {
             embed.setColor(0xe82727);
         };
         
-        console.log(member.displayName + "\n" + message.content);
         embed.addField("Author: " + member.displayName, "Message: **"+ message.content + "**");
         embed.setFooter("© The Gaming Squad, 2018");
-        embed.setTimestamp();
+        embed.setTimestamp(new Date());
 
         webhook.send({embed: embed});
     };
