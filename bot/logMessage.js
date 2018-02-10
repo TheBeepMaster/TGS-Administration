@@ -7,18 +7,6 @@ exports.log = function(message, type) {
     if (member && !message.author.bot) {
         const embed = new discordjs.RichEmbed();
 
-        if (type == "CREATE") {
-            embed.setTitle("Message Created");
-            embed.setColor(0xff0000);
-        } else if (type == "DELETE") {
-            embed.setTitle("Message Deleted");
-            embed.setColor(0xe82727);
-        };
-        
-        embed.addField("Author: " + member.displayName, "Message: **"+ message.content + "**");
-        embed.setFooter("© The Gaming Squad, 2018");
-        embed.setTimestamp(new Date());
-
-        webhook.send({embed: embed});
+        webhook.send(`Author: **${member.displayName}**\nMessage: **${message.content}**\nType: **${type}**\nTimestamp: **${new Date()}**\n`);
     };
 };
