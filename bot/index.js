@@ -18,7 +18,7 @@ client.on("message", message => {
     if (message.author.bot) return;
     if (!message.guild.available) return;
 
-    logMessage.log(message);
+    logMessage.log(message, "CREATE");
 
     if (message.content.startsWith(process.env.PREFIX)) {
         const member = message.guild.members.find("id", message.author.id);
@@ -64,7 +64,7 @@ client.on("message", message => {
 });
 
 client.on("messageDelete", message => {
-    logMessage.log(message);
+    logMessage.log(message, "DELETE");
 });
 
 client.login(process.env.TOKEN);
