@@ -2,6 +2,7 @@ const discordjs = require("discord.js");
 const client = new discordjs.Client({
     disableEveryone: true
 });
+const fs = require("fs");
 const permissions = require("./util/permissions.js");
 const logMessage = require("./logMessage.js");
 
@@ -36,14 +37,7 @@ client.on("message", message => {
         };
 
         // Since fs.existsSync() doesn't seem to work on Heroku...
-        let validCommand = false;
-        try {
-            require(`./commands/${command}.js`);
-            validCommand = true;
-        } catch (err) {
-            console.log(err);
-            validCommand = false;
-        };
+        const validCommand = fs.existsSync(`${__dirname}/commands/${command}.js`);
 
         if (validCommand) {
             const cmd = require(`./commands/${command}.js`);
