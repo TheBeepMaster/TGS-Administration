@@ -18,6 +18,8 @@ client.on("message", message => {
     if (message.author.bot) return;
     if (!message.guild.available) return;
 
+    logMessage.log(message);
+
     if (message.content.startsWith(process.env.PREFIX)) {
         const member = message.guild.members.find("id", message.author.id);
         const permission_level = permissions.calculate(member);
@@ -45,6 +47,7 @@ client.on("message", message => {
 
         if (validCommand) {
             const cmd = require(`./commands/${command}.js`);
+            
             if (permission_level >= cmd.help["permission_level"]) {
                 cmd.run(client, message, args);
             } else {
