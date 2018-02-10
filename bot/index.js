@@ -35,8 +35,7 @@ client.on("message", message => {
                 args.push(message.content.split(" ")[index]);
             };
         };
-
-        // Since fs.existsSync() doesn't seem to work on Heroku...
+        
         const validCommand = fs.existsSync(`${__dirname}/commands/${command}.js`);
 
         if (validCommand) {
