@@ -1,11 +1,12 @@
 const database = require("../util/database.js");
 
 exports.run = function(client, message, args) {
-    return message.reply("This command is not finished yet, the creator is working on it.");
+    if (message.author.id != "208666671194439681")
+        return message.reply("This command is not finished yet, the creator is working on it.");
 
 
-    
-    const member = message.mentions.users.array()[0];
+
+    const member = message.guild.members.find("id", message.mentions.users.array()[0].id);
     let reason = [];
 
     for (let index = 1; index < args.length; args++) {
