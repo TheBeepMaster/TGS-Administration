@@ -54,7 +54,7 @@ client.on("message", message => {
         };
     } else {
         if (message.content.toLowerCase().includes("ban")) {
-            return message.reply("Did I just hear the word ban? ;)");
+            return message.reply("Did I just hear the word ban? :wink:");
         };
     };
 });
