@@ -10,7 +10,7 @@ exports.init = function() {
     
     database_client.connect();
     
-    database.query("CREATE TABLE warnings");
+    database_client.query("CREATE TABLE warnings");
 };
 
 exports.query = function(query) {
