@@ -1,6 +1,10 @@
 const database = require("../util/database.js");
 
 exports.run = function(client, message, args) {
+    return message.reply("This command is not finished yet, the creator is working on it.");
+
+
+    
     const member = message.mentions.users.array()[0];
     let reason = [];
 
