@@ -3,6 +3,7 @@ const client = new discordjs.Client({
     disableEveryone: true
 });
 const fs = require("fs");
+const database = require("./util/database.js");
 const permissions = require("./util/permissions.js");
 const logMessage = require("./logMessage.js");
 
@@ -13,6 +14,8 @@ client.on("ready", () => {
             name: "with the ban hammer"
         }
     });
+
+    database.init();
 });
 
 client.on("message", message => {
@@ -35,7 +38,7 @@ client.on("message", message => {
                 args.push(message.content.split(" ")[index]);
             };
         };
-        
+
         const validCommand = fs.existsSync(`${__dirname}/commands/${command}.js`);
 
         if (validCommand) {
