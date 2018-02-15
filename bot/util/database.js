@@ -9,8 +9,6 @@ exports.init = function() {
     });
     
     database_client.connect();
-    
-    database_client.query("CREATE TABLE warnings");
 };
 
 exports.query = function(query) {
