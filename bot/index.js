@@ -21,6 +21,7 @@ client.on("ready", () => {
 client.on("message", message => {
     if (message.author.bot) return;
     if (!message.guild.available) return;
+    if (!message.guild.id == "376688710756073474") return;
 
     logMessage.log(message, "CREATE");
 
